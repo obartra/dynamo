@@ -1,0 +1,48 @@
+{
+  "name": "dynamo",
+  "version": "1.0.0",
+  "description": "Playing with Node and DynamoDB Edit",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/obartra/dynamo",
+    "type": "git"
+  },
+  "scripts": {
+    "commit": "git-cz",
+    "test": "blue-tape spec/unit/{*,**/*}.spec.js | tap-dot",
+    "lint": "eslint .",
+    "codeclimate": "cat ./coverage/lcov.info | codeclimate-test-reporter"
+  },
+  "author": "Oscar Bartra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/obartra/dynamo/issues"
+  },
+  "homepage": "https://github.com/obartra/dynamo#readme",
+  "devDependencies": {
+    "blue-tape": "^1.0.0",
+    "codeclimate-test-reporter": "^0.4.0",
+    "commitizen": "^2.9.0",
+    "cz-conventional-changelog": "^1.2.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.8.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "istanbul": "^0.4.5",
+    "tap-dot": "^1.0.5"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.7.15",
+    "bunyan": "^1.8.5",
+    "lodash": "^4.17.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+machine:
+  node:
+    version: 7.2.1
+general:
+  artifacts:
+    - "coverage"
+dependencies:
+  cache_directories:
+    - node_modules
+test:
+  override:
+    - npm run lint

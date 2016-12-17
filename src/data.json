@@ -1,0 +1,15 @@
+{
+	"dynamoOptions": {
+		"apiVersion": "2012-08-10",
+		"endpoint": "https://dynamodb.us-east-1.amazonaws.com",
+		"region": "us-east-1",
+		"maxRetries": 3,
+		"sslEnabled": true
+	},
+	"ProvisionedThroughput": {
+		"ReadCapacityUnits": 1,
+		"WriteCapacityUnits": 1
+	},
+	"serviceName": "dynamo-playground",
+	"logLevel": "info"
+}
