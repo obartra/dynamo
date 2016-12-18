@@ -21,7 +21,7 @@ function importMovies() {
 	const success = [];
 	const errors = [];
 	const reasons = [];
-	const promises = _.map(allMovies, movie =>
+	const promises = _.map([allMovies[0]], movie =>
 		upsertItem('movies', movie)
 			.then(() => {
 				success.push(movie.title);

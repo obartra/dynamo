@@ -1,12 +1,19 @@
 machine:
   node:
     version: 7.2.1
+  java:
+    version: openjdk7
 general:
   artifacts:
     - "coverage"
 dependencies:
+  pre:
+    - mkdir -p dynamodb
+    - bash ./scripts/local-install.sh
+        background: true
   cache_directories:
     - node_modules
+    - dynamodb
 test:
   override:
     - npm run lint

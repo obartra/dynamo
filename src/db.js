@@ -4,16 +4,18 @@ const {
 	dynamoOptions,
 	serviceName,
 	logLevel,
+	localDynamoOptions,
 	ProvisionedThroughput
 } = require('./data.json');
 const dynamo = require('./dynamo');
 
+const isLocal = process.argv.includes('local');
 const logger = bunyan.createLogger({ name: `${serviceName}-awssdk`, level: logLevel });
 const instance = dynamo.getInstance(Object.assign({
 	accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-	secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-	logger
-}, dynamoOptions));
+	logger,
+	secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+}, isLocal ? localDynamoOptions : dynamoOptions));
 const docClient = dynamo.getDocClient(dynamoOptions.region);
 
 module.exports = {

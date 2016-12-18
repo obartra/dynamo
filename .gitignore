@@ -1,2 +1,4 @@
 node_modules
 envvars.sh
+shared-local-instance.db
+dynamodb

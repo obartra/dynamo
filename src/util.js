@@ -21,7 +21,7 @@ function retry(queue, timeout = 0, maxRetries = 10, retryAttempt = 0) {
 	if (!queue.length) {
 		return Promise.resolve();
 	} else if (retryAttempt > maxRetries) {
-		return Promise.reject();
+		return Promise.reject({ message: 'Max retries exceeded' });
 	}
 
 	const additionalDelay = 1000;
@@ -30,7 +30,10 @@ function retry(queue, timeout = 0, maxRetries = 10, retryAttempt = 0) {
 	return wait(timeout)
 		.then(attempt)
 		.then(() => retry(queue, timeout - additionalDelay, maxRetries))
-		.catch(() => retry([attempt, ...queue], timeout + additionalDelay, maxRetries, ++retryAttempt));
+		.catch((msg) => {
+			console.error(msg);
+			return retry([attempt, ...queue], timeout + additionalDelay, maxRetries, ++retryAttempt)
+		});
 }
 
 function wait(timeout = 0) {
