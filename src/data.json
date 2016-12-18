@@ -7,8 +7,8 @@
 		"sslEnabled": true
 	},
 	"ProvisionedThroughput": {
-		"ReadCapacityUnits": 1,
-		"WriteCapacityUnits": 1
+		"ReadCapacityUnits": 25,
+		"WriteCapacityUnits": 25
 	},
 	"serviceName": "dynamo-playground",
 	"logLevel": "info"

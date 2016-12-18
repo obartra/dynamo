@@ -8,7 +8,7 @@ const {
 } = require('./data.json');
 const dynamo = require('./dynamo');
 
-const logger = bunyan.createLogger({ name: serviceName, level: logLevel });
+const logger = bunyan.createLogger({ name: `${serviceName}-awssdk`, level: logLevel });
 const instance = dynamo.getInstance(Object.assign({
 	accessKeyId: process.env.AWS_ACCESS_KEY_ID,
 	secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -21,5 +21,8 @@ module.exports = {
 	dropTable: partial(dynamo.dropTable, instance),
 	getAllTables: partial(dynamo.getAllTables, instance),
 	upsertItem: partial(dynamo.upsertItem, docClient),
-	getItem: partial(dynamo.getItem, docClient)
+	getItem: partial(dynamo.getItem, docClient),
+	getTableStatus: partial(dynamo.getTableStatus, instance),
+	query: partial(dynamo.query, docClient),
+	scan: partial(dynamo.scan, docClient)
 };
